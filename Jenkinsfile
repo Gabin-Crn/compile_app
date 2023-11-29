@@ -25,7 +25,7 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'dockerhubpass', usernameVariable: 'dockerUsername', passwordVariable: 'dockerPassword')]) {
                     sh 'docker login -u $dockerUsername -p $dockerPassword'
-                    sh 'docker push gms/alpinegms'
+                    sh 'docker push gabin1704/alpinegms'
                 }
             }
         }
