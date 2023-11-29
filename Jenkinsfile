@@ -25,9 +25,18 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'dockerhubpass', usernameVariable: 'dockerUsername', passwordVariable: 'dockerPassword')]) {
                     sh 'docker login -u $dockerUsername -p $dockerPassword'
-                    sh 'docker push gabin1704/alpinegms'
+                    sh 'docker push gms/alpinegms'
                 }
             }
         }
-    }
+    }post {
+        failure {
+            emailext(
+                body: "Le Build ${BUILD_NUMBER} a échoué.",
+                subject: "Échec du Build ${BUILD_NUMBER}",
+                to: "gabinschoolcornaire@gmail.com",
+                recipientProviders: [requestor()]
+            )
+        }
+
 }
