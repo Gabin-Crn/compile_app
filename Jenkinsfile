@@ -37,6 +37,6 @@ pipeline{
                 to: "gabinschoolcornaire@gmail.com",
                 recipientProviders: [requestor()]
             )
-        }
-
+	}
+	}
 }
