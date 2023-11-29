@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git(credentialsId: 'git_credentials', url: 'https://github.com/your-repository.git')
+                git(credentialsId: 'git_credentials', url: 'https://github.com/Gabin-Crn/compile_app.git')
             }
         }
         stage('Build the Maven application') {
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhubpass', usernameVariable: 'dockerUsername', passwordVariable: 'dockerPassword')]) {
                     sh 'docker login -u $dockerUsername -p $dockerPassword'
-                    sh 'docker push gabin1704/alpinegms'
+                    sh 'docker push gabin1704/alpine'
                 }
             }
         }
