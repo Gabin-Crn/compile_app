@@ -29,16 +29,7 @@ pipeline {
                 }
             }
         }
-    }
-    post {
-        failure {
-            emailext(
-                body: "Le Build ${BUILD_NUMBER} a échoué.",
-                subject: "Échec du Build ${BUILD_NUMBER}",
-                to: "gabinschoolcornaire@gmail.com",
-                recipientProviders: [requestor()]
-            )
-        }
+   
     }
 }
 
