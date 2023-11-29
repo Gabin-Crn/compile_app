@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git(credentialsId: 'git_credentials', url: 'https://github.com/Gabin-Crn/compile_app.git')
+                git(credentialsId: 'git_credentials', url: 'https://github.com/Gabin-Crn/compile_app.git', branch: 'main')
             }
         }
         stage('Build the Maven application') {
